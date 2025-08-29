@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Complexo Escolar Privado Castelo Reis</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variáveis e Reset */
+        :root {
+            --primary: #1a4b8c;
+            --secondary: #f8c300;
+            --accent: #c8102e;
+            --light: #f5f5f5;
+            --dark: #333;
+            --success: #28a745;
+            --font-title: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-text: 'Roboto', Arial, sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-text);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background-color: #0d3a6b;
+            transform: translateY(-2px);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: var(--dark);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #e6b400;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: var(--font-title);
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+        }
+        
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .top-bar {
+            background-color: var(--primary);
+            color: white;
+            padding: 8px 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-info {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-icons a {
+            color: white;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--secondary);
+        }
+        
+        .main-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 60px;
+            margin-right: 10px;
+        }
+        
+        .logo h1 {
+            font-family: var(--font-title);
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-menu li {
+            position: relative;
+        }
+        
+        .nav-menu a {
+            font-weight: 500;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-menu .submenu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: white;
+            width: 200px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            border-radius: 5px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        
+        .nav-menu li:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            top: 120%;
+        }
+        
+        .submenu li {
+            padding: 10px 20px;
+        }
+        
+        .submenu a {
+            display: block;
+            padding: 5px 0;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 75, 140, 0.8), rgba(26, 75, 140, 0.8)), url('https://placehold.co/1200x600/1a4b8c/white?text=Castelo+Reis') no-repeat center center/cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            font-family: var(--font-title);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* About */
+        .about {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+        }
+        
+        .about-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            color: #666;
+        }
+        
+        /* Programs */
+        .programs {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .program-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .program-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .program-card:hover .program-image img {
+            transform: scale(1.1);
+        }
+        
+        .program-content {
+            padding: 20px;
+        }
+        
+        .program-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .program-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        .program-content .btn {
+            margin-top: 10px;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: linear-gradient(rgba(26, 75, 140, 0.9), rgba(26, 75, 140, 0.9)), url('https://placehold.co/1200x400/1a4b8c/white?text=Testemunhos') no-repeat center center/cover;
+            color: white;
+            text-align: center;
+        }
+        
+        .testimonials-slider {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .testimonial-item {
+            padding: 30px;
+        }
+        
+        .testimonial-text {
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* News */
+        .news {
+            padding: 80px 0;
+            background-color: #f9f9f9;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .news-content {
+            padding: 20px;
+        }
+        
+        .news-date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        .news-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .news-content p {
+            margin-bottom: 15px;
+            color: #666;
+        }
+        
+        /* Contact */
+        .contact {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 300px;
+            border: none;
+            border-radius: 10px;
+        }
+        
+        .contact-form .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .contact-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+        
+        .contact-form textarea {
+            min-height: 150px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-column p {
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+            color: var(--secondary);
+        }
+        
+        .footer-newsletter form {
+            display: flex;
+            margin-top: 15px;
+        }
+        
+        .footer-newsletter input {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+        }
+        
+        .footer-newsletter button {
+            background-color: var(--secondary);
+            color: var(--dark);
+            border: none;
+            padding: 0 15px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .top-bar-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                flex-direction: column;
+                padding: 100px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s;
+                z-index: 999;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu .submenu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                box-shadow: none;
+                padding: 10px 0 10px 20px;
+                width: 100%;
+            }
+            
+            .nav-menu li:hover .submenu {
+                top: 0;
+            }
+            
+            .hamburger {
+                display: block;
+                z-index: 1000;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="contact-info">
+                <span><i class="fas fa-phone"></i> (11) 3456-7890</span>
+                <span><i class="fas fa-envelope"></i> contato@casteloreis.com.br</span>
+            </div>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container main-header">
+            <div class="logo">
+                <img src="https://placehold.co/100x60/1a4b8c/white?text=CR" alt="Castelo Reis">
+                <h1>Castelo Reis</h1>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Sobre Nós</a>
+                        <ul class="submenu">
+                            <li><a href="#">História</a></li>
+                            <li><a href="#">Missão e Valores</a></li>
+                            <li><a href="#">Estrutura</a></li>
+                            <li><a href="#">Equipe</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Cursos</a>
+                        <ul class="submenu">
+                            <li><a href="#">Educação Infantil</a></li>
+                            <li><a href="#">Ensino Fundamental</a></li>
+                            <li><a href="#">Ensino Médio</a></li>
+                            <li><a href="#">Cursos Extracurriculares</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Admissões</a></li>
+                    <li><a href="#">Portal do Aluno</a></li>
+                    <li><a href="#">Contato</a></li>
+                </ul>
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>Excelência em Educação desde 1985</h2>
+            <p>O Complexo Escolar Castelo Reis oferece educação de qualidade da Educação Infantil ao Ensino Médio, formando cidadãos preparados para os desafios do futuro.</p>
+            <div class="hero-buttons">
+                <a href="#" class="btn">Agende uma Visita</a>
+                <a href="#" class="btn btn-secondary">Conheça Nossos Cursos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Diferenciais</h2>
+                <p>Conheça as vantagens de fazer parte da família Castelo Reis</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Corpo Docente Qualificado</h3>
+                    <p>Professores especializados, mestres e doutores comprometidos com a educação de qualidade.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-laptop"></i>
+                    </div>
+                    <h3>Tecnologia Educacional</h3>
+                    <p>Salas equipadas com recursos tecnológicos de ponta para potencializar o aprendizado.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-futbol"></i>
+                    </div>
+                    <h3>Infraestrutura Esportiva</h3>
+                    <p>Complexo esportivo completo com quadras, piscina e campo para diversas modalidades.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Biblioteca Atualizada</h3>
+                    <p>Acervo com mais de 20.000 volumes e ambiente propício para pesquisa e estudo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Uma tradição de excelência em educação há mais de três décadas</p>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://placehold.co/600x400/1a4b8c/white?text=Escola" alt="Complexo Escolar Castelo Reis">
+                </div>
+                <div class="about-text">
+                    <h2>Bem-vindo ao Castelo Reis</h2>
+                    <p>Fundado em 1985, o Complexo Escolar Privado Castelo Reis tem sido referência em educação de qualidade, formando gerações de profissionais bem-sucedidos e cidadãos conscientes.</p>
+                    <p>Nossa proposta pedagógica combina tradição e inovação, preparando os alunos não apenas para os vestibulares, mas para a vida em sociedade, com valores éticos e humanos.</p>
+                    <p>Com campus de 20.000m², oferecemos infraestrutura completa e moderna para o desenvolvimento integral dos estudantes.</p>
+                    <div class="about-stats">
+                        <div class="stat">
+                            <div class="stat-number">2000+</div>
+                            <div class="stat-label">Alunos</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Professores</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">35</div>
+                            <div class="stat-label">Anos de História</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section class="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Cursos</h2>
+                <p>Oferecemos uma formação completa da Educação Infantil ao Ensino Médio</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://placehold.co/400x300/1a4b8c/white?text=Educação+Infantil" alt="Educação Infantil">
+                    </div>
+                    <div class="program-content">
+                        <h3>Educação Infantil</h3>
+                        <p>Ambiente lúdico e seguro para o desenvolvimento das crianças de 2 a 5 anos, com estímulos adequados para cada fase.</p>
+                        <a href="#" class="btn">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://placehold.co/400x300/1a4b8c/white?text=Ensino+Fundamental" alt="Ensino Fundamental">
+                    </div>
+                    <div class="program-content">
+                        <h3>Ensino Fundamental</h3>
+                        <p>Formação integral com base sólida de conhecimentos, valores e desenvolvimento de habilidades cognitivas e socioemocionais.</p>
+                        <a href="#" class="btn">Saiba Mais</a>
+                    </div>
+                </div>
+                <div class="program-card">
+                    <div class="program-image">
+                        <img src="https://placehold.co/400x300/1a4b8c/white?text=Ensino+Médio" alt="Ensino Médio">
+                    </div>
+                    <div class="program-content">
+                        <h3>Ensino Médio</h3>
+                        <p>Preparação diferenciada para vestibulares e ENEM, com programa de orientação profissional e projetos interdisciplinares.</p>
+                        <a href="#" class="btn">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Dizem Sobre Nós</h2>
+                <p>Depoimentos de pais, alunos e ex-alunos da nossa comunidade escolar</p>
+            </div>
+            <div class="testimonials-slider">
+                <div class="testimonial-item">
+                    <p class="testimonial-text">"Matriculei meus dois filhos no Castelo Reis e não poderia estar mais satisfeita. A evolução no desenvolvimento deles é visível, tanto academicamente quanto como cidadãos."</p>
+                    <p class="testimonial-author">Ana Silva</p>
+                    <p class="testimonial-role">Mãe de alunos do Fundamental I</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Section -->
+    <section class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>Notícias e Eventos</h2>
+                <p>Fique por dentro das novidades do Castelo Reis</p>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://placehold.co/400x300/1a4b8c/white?text=Evento+Cultural" alt="Evento Cultural">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">15 de Agosto, 2023</div>
+                        <h3>Festival Cultural 2023</h3>
+                        <p>Nosso festival anual acontecerá no próximo mês com apresentações de teatro, música e exposições de artes.</p>
+                        <a href="#" class="btn">Leia Mais</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://placehold.co/400x300/1a4b8c/white?text=Olimpíadas" alt="Olimpíadas">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">22 de Agosto, 2023</div>
+                        <h3>Alunos Destaque nas Olimpíadas de Matemática</h3>
+                        <p>Três de nossos estudantes conquistaram medalhas na OBMEP 2023. Parabéns aos campeões!</p>
+                        <a href="#" class="btn">Leia Mais</a>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://placehold.co/400x300/1a4b8c/white?text=Palestra" alt="Palestra">
+                    </div>
+                    <div class="news-content">
+                        <div class="news-date">5 de Setembro, 2023</div>
+                        <h3>Palestra sobre Sustentabilidade</h3>
+                        <p>Especialista em educação ambiental ministrará palestra para os alunos do Ensino Médio.</p>
+                        <a href="#" class="btn">Leia Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <p>Estamos à disposição para esclarecer todas as suas dúvidas</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de Contato</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Av. das Educação, 1234 - Jardim do Conhecimento - São Paulo/SP</p>
+                        <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                        <p><i class="fas fa-envelope"></i> contato@casteloreis.com.br</p>
+                        <p><i class="fas fa-clock"></i> Segunda a Sexta: 7h às 19h | Sábado: 8h às 12h</p>
+                    </div>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.106696296001!2d-46.65390558502166!3d-23.564611167596952!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1664828077728!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome Completo</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Assunto</label>
+                            <input type="text" id="subject">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Mensagem</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Castelo Reis</h3>
+                    <p>Educação de qualidade da Educação Infantil ao Ensino Médio, formando cidadãos preparados para os desafios do futuro.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Links Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Cursos</a></li>
+                        <li><a href="#">Admissões</a></li>
+                        <li><a href="#">Portal do Aluno</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Cursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Educação Infantil</a></li>
+                        <li><a href="#">Ensino Fundamental I</a></li>
+                        <li><a href="#">Ensino Fundamental II</a></li>
+                        <li><a href="#">Ensino Médio</a></li>
+                        <li><a href="#">Cursos Extracurriculares</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Newsletter</h3>
+                    <p>Inscreva-se para receber nossas novidades e eventos.</p>
+                    <div class="footer-newsletter">
+                        <form>
+                            <input type="email" placeholder="Seu e-mail" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Complexo Escolar Privado Castelo Reis. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu Mobile
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+    </script>
+</body>
+</html>
